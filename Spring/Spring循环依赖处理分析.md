@@ -1,6 +1,6 @@
 
    循环依赖就是N个类中循环嵌套引用，如果在日常开发中我们用new 对象的方式发生这种循环依赖的话程序会在运行时一直循环调用，直至内存溢出报错，如下图所示：
-   ![](assets/circular_reference.png)
+   ![](../assets/circular_reference.png)
 
 循环依赖的情况：
 - 构造器参数依赖
@@ -88,7 +88,7 @@ Spring容器先创建单例StudentA，StudentA依赖StudentB，然后将A放在�
 
 #### 2、setter的singleton依赖
 bean的生命周期如下图：
-![](assets/bean_lifecycle.png)
+![](../assets/bean_lifecycle.png)
 ##### 2.1缓存的定义
 先看`DefaultSingletonBeanRegistry`关于缓存的定义
 ```java
@@ -116,7 +116,7 @@ private final Set<String> singletonsCurrentlyInCreation =
 
 ##### 2.2bean创建的过程
 bean的实例化流程图如下：
-![](assets/bean_intialize_process.png)
+![](../assets/bean_intialize_process.png)
 从`AbstarctBeanFactory`的`getBean`开始，是个空壳方法，直接调用`doGetBean(name, null, null, false)`，该方法的分析如下(只分析了比较重要部分的代码，其他地方有所省略)：
 ```java
 protected <T> T doGetBean(
@@ -262,7 +262,7 @@ protected Object getSingleton(String beanName, boolean allowEarlyReference) {
 	}
 ```
 标识②中的代码，即：
-**`getSingleton(String beanName, ObjectFactory<?> singletonFactory)`**方法，此处对对bean进行实例化操作，并将其加入到缓存，代码如下：
+**getSingleton(String beanName, ObjectFactory<?> singletonFactory)**方法，此处对对bean进行实例化操作，并将其加入到缓存，代码如下：
 
 ```java
 public Object getSingleton(String beanName, ObjectFactory<?> singletonFactory) {
