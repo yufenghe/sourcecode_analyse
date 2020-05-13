@@ -379,7 +379,9 @@ put元素定位到指定segment元素时，如果segment尚未初始化，则执
   }
 ```
 #### rehash
-如果当前Segment中HashEntry元素的数量超过阈值，会进行扩容，并将原来HashEntry中的元素重新hash，以便尽量达到均匀分布的特点。
+如果当前Segment中HashEntry元素的数量超过阈值，会进行扩容，并将原来HashEntry中的元素重新hash，以便尽量达到均匀分布的特点。过程图如下：
+![](../assets/jdk/concurrenthashmap_rehash.png)
+
 ```java
     /**
      * 重新hash，双倍扩容
