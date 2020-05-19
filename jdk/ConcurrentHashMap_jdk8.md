@@ -1,6 +1,6 @@
 ## ConcurrentHashMap的源码分析（jdk8）
 
-> 之前分洗了jdk7版本的ConcurrentHashMap，接下来看下jdk8的ConcurrentHashMap做了哪些修改，其中包括数据结构和非阻塞实现方式。
+> 之前分析了jdk7版本的ConcurrentHashMap，接下来看下jdk8的ConcurrentHashMap做了哪些修改，其中包括数据结构和非阻塞实现方式。
 
 先看以下jdk8下ConcurrentHashMap的结构图：
 ![](../assets/jdk/concurrenthashmap_jdk8_structure.png)
