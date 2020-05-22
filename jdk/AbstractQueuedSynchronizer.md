@@ -3,13 +3,10 @@
 > AQS是java.util.concurrent并发包的中实现锁ReetrantLock及同步器CountdownLatch、CyclicBarrier、Semaphore等的基础框架，基于volatile变量state和队列实现加锁、释放锁和阻塞等待的操作。
 
 先挂一张获取资源的流程图，如下：
-
+![](../assets/jdk/AbstractQueuedSynchronizer_structure.png)
 
 ### Node定义
-> 队列节点类，等待线程节点构成双向队列（包括独占节点和共享节点），结构如下：
-      +------+  prev +-----+       +-----+
- head |      | <---- |     | <---- |     |  tail
-      +------+       +-----+       +-----+
+> 队列节点类，等待线程节点构成双向队列（包括独占节点和共享节点）。
 
 ```java
 static final class Node {
