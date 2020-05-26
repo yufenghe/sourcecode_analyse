@@ -3,7 +3,9 @@
 在多线程情况下，非独占模式，在state>=0的情况下，每个线程都有资格获得资源，当一个线程获得资源后，有义务通知后面的线程继续获得资源。
 
 先上图，CountDownLatch的状态流转图和流程图如下：
+![](../assets/jdk/CountDownLatch_state_change.png)
 
+![](../assets/jdk/CountDownLatch_thread_process.png)
 
 来自官方的实例：
 ### 使用示例
