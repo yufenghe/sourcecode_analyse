@@ -10,6 +10,8 @@
 - putLock，尾部锁，用于put/offer的操作。
 - notFull，put等待条件。
 
+LinkedBlockingQueue的类图如下：
+
 ![](../assets/jdk/LinkedBlockingQueue_class_inher.png)
 
 LinkedBlockingQueue的方法使用特点：
