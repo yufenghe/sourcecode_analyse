@@ -120,6 +120,9 @@ static final class QNode {
 如果新来的请求与尾部的请求不同，说明前面有配对需求，那么直接从头部开始匹配。
 这种方式，很好的处理了公平性原则。
 
+先来看以下transfer的整体流程图：
+![](../assets/jdk/SynchronousQueue_transferqueue_transfer_process.png)
+
 ```
 E transfer(E e, boolean timed, long nanos) {
     QNode s = null;
@@ -417,6 +420,9 @@ static final class SNode {
 - 3、如果栈为空或者当前节点的mode与栈顶节点的mode相同（否则进行第4步），表示有相同mode的请求在等待，那么将此节点放入栈顶（设为head），自旋然后（超时）阻塞等待。
 - 4、如果当前栈不为空并且栈顶元素的mode与新请求的mode不相同，且当前请求的head尚未进行匹配（如果当前head正在进行匹配，则进行第5步），那么新请求可以尝试匹配，将新请求添加到栈顶（设为head），与next节点配对匹配，成功则返回。
 - 5、如果当前栈顶head正在进行配对，则当前线程协助栈顶元素配对，配对成功，设置新的head指向。
+
+先来看以下transfer的整体流程图：
+![](../assets/jdk/SynchronousQueue_transferstack_transfer_process.png)
 
 ```
 E transfer(E e, boolean timed, long nanos) {
